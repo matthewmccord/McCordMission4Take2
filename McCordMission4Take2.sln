@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "McCordMission4Take2", "McCordMission4Take2.csproj", "{4FCD5FC3-1E78-4061-A244-E1C2C2C513B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FCD5FC3-1E78-4061-A244-E1C2C2C513B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FCD5FC3-1E78-4061-A244-E1C2C2C513B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FCD5FC3-1E78-4061-A244-E1C2C2C513B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FCD5FC3-1E78-4061-A244-E1C2C2C513B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D7563A1-9C25-47BD-967B-F2AA92FE42DB}
+	EndGlobalSection
+EndGlobal

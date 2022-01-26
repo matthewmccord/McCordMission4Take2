@@ -1,0 +1,43 @@
+﻿@{            
+    ViewData["Title"] = "Movie Database Entry";
+}
+
+@model McCordMission4Take2.Models.MovieAdd
+<h1>Enter a movie into the database</h1>
+<div>
+    <form method="post">
+        <label asp-for="Category" >Category:</label>
+        <input asp-for="Category" /><br />
+
+        <label asp-for="Title" >Title:</label>
+        <input asp-for="Title" /><br />
+
+        <label asp-for="Director">Director:</label>
+        <input asp-for="Director" /><br />
+
+        <label asp-for="Rating">Rating:</label>
+        <select asp-for="Rating">
+            <option>G</option>
+            <option>PG</option>
+            <option>PG-13</option>
+            <option>R</option>
+        </select>
+
+        <label asp-for="Edited">Edited:</label>
+        <select asp-for="Edited">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select><br />
+
+        <label asp-for="Lent_To">Lent to:</label>
+        <input asp-for="Lent_To" /><br />
+
+        <label asp-for="Note">Note:</label>
+        <input asp-for="Note" /><br />
+
+        <button type="submit">Submit your Movie to the Database</button>
+        <div asp-validation-summary="All"></div>
+    </form>
+
+
+</div>
