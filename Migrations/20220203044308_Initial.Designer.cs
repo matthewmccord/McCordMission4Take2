@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace McCordMission4Take2.Migrations
 {
     [DbContext(typeof(MovieData))]
-    [Migration("20220126232307_Initial")]
+    [Migration("20220203044308_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,15 +17,50 @@ namespace McCordMission4Take2.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
 
-            modelBuilder.Entity("McCordMission4Take2.Models.MovieAdd", b =>
+            modelBuilder.Entity("McCordMission4Take2.Models.Category", b =>
                 {
-                    b.Property<int>("ApplicationID")
+                    b.Property<int>("CategoryID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
+                    b.Property<string>("CategoryName")
                         .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryID");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryID = 1,
+                            CategoryName = "Comedy"
+                        },
+                        new
+                        {
+                            CategoryID = 2,
+                            CategoryName = "Romantic-Comedy"
+                        },
+                        new
+                        {
+                            CategoryID = 3,
+                            CategoryName = "Animation"
+                        },
+                        new
+                        {
+                            CategoryID = 4,
+                            CategoryName = "Drama"
+                        });
+                });
+
+            modelBuilder.Entity("McCordMission4Take2.Models.MovieAdd", b =>
+                {
+                    b.Property<int>("MovieID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -49,15 +84,17 @@ namespace McCordMission4Take2.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ApplicationID");
+                    b.HasKey("MovieID");
+
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("MovieAdds");
 
                     b.HasData(
                         new
                         {
-                            ApplicationID = 1,
-                            Category = "Comedy",
+                            MovieID = 1,
+                            CategoryID = 1,
                             Director = "Rawson Thurber",
                             Edited = true,
                             Lent_To = "Connor Meadows",
@@ -67,8 +104,8 @@ namespace McCordMission4Take2.Migrations
                         },
                         new
                         {
-                            ApplicationID = 2,
-                            Category = "Romantic-Comedy",
+                            MovieID = 2,
+                            CategoryID = 2,
                             Director = "Jon M. Chu",
                             Edited = false,
                             Rating = "PG-13",
@@ -76,13 +113,22 @@ namespace McCordMission4Take2.Migrations
                         },
                         new
                         {
-                            ApplicationID = 3,
-                            Category = "Animation",
+                            MovieID = 3,
+                            CategoryID = 4,
                             Director = "Jon M. Chu",
                             Edited = false,
                             Rating = "PG",
                             Title = "Mulan"
                         });
+                });
+
+            modelBuilder.Entity("McCordMission4Take2.Models.MovieAdd", b =>
+                {
+                    b.HasOne("McCordMission4Take2.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

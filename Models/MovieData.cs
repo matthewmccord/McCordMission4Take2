@@ -14,14 +14,22 @@ namespace McCordMission4Take2.Models
         }
 
         public DbSet<MovieAdd> MovieAdds { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                new Category { CategoryID = 1, CategoryName = "Comedy" },
+                new Category { CategoryID = 2, CategoryName = "Romantic-Comedy" },
+                new Category { CategoryID = 3, CategoryName = "Animation" },
+                new Category { CategoryID = 4, CategoryName = "Drama" }
+                );
+            
             mb.Entity<MovieAdd>().HasData(
                 new MovieAdd
                 {
-                    ApplicationID = 1,
-                    Category = "Comedy",
+                    MovieID = 1,
+                    CategoryID = 1,
                     Title = "Dodgeball",
                     Director = "Rawson Thurber",
                     Rating = "PG-13",
@@ -31,8 +39,8 @@ namespace McCordMission4Take2.Models
                 },
                 new MovieAdd
                 {
-                    ApplicationID = 2,
-                    Category = "Romantic-Comedy",
+                    MovieID = 2,
+                    CategoryID = 2,
                     Title = "Crazy Rich Asians",
                     Director = "Jon M. Chu",
                     Rating = "PG-13",
@@ -40,8 +48,8 @@ namespace McCordMission4Take2.Models
                 },
                 new MovieAdd
                 {
-                    ApplicationID = 3,
-                    Category = "Animation",
+                    MovieID = 3,
+                    CategoryID = 3,
                     Title = "Mulan",
                     Director = "Jon M. Chu",
                     Rating = "PG"
